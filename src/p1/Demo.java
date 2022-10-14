@@ -1,6 +1,11 @@
 package p1;
 
-public class Demo implements Runnable{
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class Demo implements Runnable {
 
 	public static void main(String[] args) {
 		printSystemInformation();
@@ -17,12 +22,23 @@ public class Demo implements Runnable{
 	}
 	
 	private static void printSystemPerformance() {
-		
+		Thread th = new Thread(new Demo());
+		th.start();
 	}
 
 	@Override
 	public void run() {
-		
+		try {
+			Process process = Runtime.getRuntime().exec("systeminfo");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			
+			String line = "";
+			while((line = reader.readLine()) != null) {
+				System.out.println(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
