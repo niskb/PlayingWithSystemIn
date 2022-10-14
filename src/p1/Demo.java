@@ -1,6 +1,6 @@
 package p1;
 
-public class Demo {
+public class Demo implements Runnable{
 
 	public static void main(String[] args) {
 		printSystemInformation();
@@ -17,6 +17,11 @@ public class Demo {
 	}
 	
 	private static void printSystemPerformance() {
+		
+	}
+
+	@Override
+	public void run() {
 		
 	}
 	
