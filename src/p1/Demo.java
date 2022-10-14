@@ -21,9 +21,12 @@ public class Demo implements Runnable {
 		System.out.println("User Account Name: " + System.getProperty("user.name"));
 	}
 	
+	@SuppressWarnings("static-access")
 	private static void printSystemPerformance() {
 		Thread th = new Thread(new Demo());
 		th.start();
+		th.currentThread().interrupt();
+		return;
 	}
 
 	@Override
