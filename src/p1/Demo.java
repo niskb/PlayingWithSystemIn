@@ -28,6 +28,10 @@ public class Demo implements Runnable {
 
 	@Override
 	public void run() {
+		runSystemInfo();
+	}
+	
+	private static void runSystemInfo() {
 		try {
 			Process process = Runtime.getRuntime().exec("systeminfo");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
